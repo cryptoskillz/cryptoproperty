@@ -1,14 +1,11 @@
 const superagent = require('superagent');
+let env = require('./env')
 
 getProperties = async () => {
-
-	console.log(_API_URL);
-	return;
 	try {
-        var res = await superagent.get(env.API_URL + 'users/').query({
-            'limit': '100'
+        var res = await superagent.get(env.API_URL + 'properties/').query({
         });
-        var resultsArray = res.body.results;
+        var resultsArray = res.body;
         var hasNextPage = !!(res.body.next)
         var nextPageURL = res.body.next;
         while (hasNextPage) {
@@ -17,16 +14,18 @@ getProperties = async () => {
             nextPageURL = nextPage.body.next
             resultsArray = resultsArray.concat(nextPage.body.results)
         }
-        console.log('Built users array with ' + resultsArray.length + ' users');
+        console.log(resultsArray);
+        console.log('Built properties array with ' + resultsArray.length + ' properties');
         return resultsArray;
     } catch (err) {
-        console.log('Error getting users:')
+        console.log('Error getting properties:')
         console.error(err)
     }
 }
 
 module.exports = async () => {
 	let properties = [];
+	properties = getProperties();
 	return {
 		propertiesArray:properties
 	}
