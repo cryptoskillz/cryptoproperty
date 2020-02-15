@@ -14,7 +14,6 @@ getProperties = async () => {
             nextPageURL = nextPage.body.next
             resultsArray = resultsArray.concat(nextPage.body.results)
         }
-        console.log(resultsArray);
         console.log('Built properties array with ' + resultsArray.length + ' properties');
         return resultsArray;
     } catch (err) {
@@ -25,7 +24,8 @@ getProperties = async () => {
 
 module.exports = async () => {
 	let properties = [];
-	properties = getProperties();
+	properties = await getProperties();
+	console.log(properties)
 	return {
 		propertiesArray:properties
 	}
