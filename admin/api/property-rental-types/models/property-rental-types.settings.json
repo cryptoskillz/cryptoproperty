@@ -1,0 +1,16 @@
+{
+  "connection": "default",
+  "collectionName": "property_rental_types",
+  "info": {
+    "name": "PropertyRental_types"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

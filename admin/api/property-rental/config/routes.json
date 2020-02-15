@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/property-rentals",
+      "handler": "property-rental.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/property-rentals/count",
+      "handler": "property-rental.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/property-rentals/:id",
+      "handler": "property-rental.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/property-rentals",
+      "handler": "property-rental.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/property-rentals/:id",
+      "handler": "property-rental.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/property-rentals/:id",
+      "handler": "property-rental.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

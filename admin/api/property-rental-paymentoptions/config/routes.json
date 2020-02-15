@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/property-rental-paymentoptions",
+      "handler": "property-rental-paymentoptions.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/property-rental-paymentoptions/count",
+      "handler": "property-rental-paymentoptions.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/property-rental-paymentoptions/:id",
+      "handler": "property-rental-paymentoptions.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/property-rental-paymentoptions",
+      "handler": "property-rental-paymentoptions.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/property-rental-paymentoptions/:id",
+      "handler": "property-rental-paymentoptions.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/property-rental-paymentoptions/:id",
+      "handler": "property-rental-paymentoptions.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

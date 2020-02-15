@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "property_rental_paymentoptions",
+  "info": {
+    "name": "PropertyRental_paymentoptions"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "property_rental": {
+      "via": "property_rental_paymentoptions",
+      "model": "property-rental"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "property_shares",
+  "info": {
+    "name": "PropertyShares"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "property": {
+      "model": "property"
+    },
+    "investors": {
+      "model": "investors"
+    },
+    "tokens": {
+      "type": "integer"
+    },
+    "fiatinvested": {
+      "type": "decimal"
+    },
+    "dateissued": {
+      "type": "date"
+    },
+    "contract": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "connection": "default",
+  "collectionName": "properties",
+  "info": {
+    "name": "Property"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "shortdescription": {
+      "type": "text"
+    },
+    "Address1": {
+      "type": "string"
+    },
+    "Address2": {
+      "type": "string"
+    },
+    "Address3": {
+      "type": "string"
+    },
+    "Address4": {
+      "type": "string"
+    },
+    "Address5": {
+      "type": "string"
+    },
+    "PurchasePrice": {
+      "type": "decimal"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "available",
+        "rented"
+      ]
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "tokenname": {
+      "type": "string"
+    },
+    "tokenurl": {
+      "type": "string"
+    },
+    "totalnumberoftokens": {
+      "type": "string"
+    },
+    "company": {
+      "model": "company"
+    },
+    "property_features": {
+      "collection": "property-features",
+      "via": "property"
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "bathrooms": {
+      "type": "integer"
+    },
+    "Size": {
+      "type": "decimal"
+    },
+    "longdescription": {
+      "type": "richtext"
+    },
+    "featured": {
+      "type": "enumeration",
+      "enum": [
+        "yes",
+        "no"
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "connection": "default",
+  "collectionName": "property_rentals",
+  "info": {
+    "name": "propertyRental"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "rental": {
+      "type": "string"
+    },
+    "startdate": {
+      "type": "date"
+    },
+    "enddate": {
+      "type": "date"
+    },
+    "property": {
+      "model": "property"
+    },
+    "renters": {
+      "collection": "renter",
+      "via": "property_rental"
+    },
+    "contract": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "amount": {
+      "type": "float"
+    },
+    "property_rental_type": {
+      "model": "property-rental-types"
+    },
+    "property_rental_paymentoptions": {
+      "collection": "property-rental-paymentoptions",
+      "via": "property_rental"
+    },
+    "frequency": {
+      "type": "enumeration",
+      "enum": [
+        "Once",
+        "Weekly",
+        "Monthly",
+        "Yearly"
+      ]
+    },
+    "Desosit": {
+      "type": "float"
+    }
+  }
+}

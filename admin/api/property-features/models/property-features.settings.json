@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "property_features",
+  "info": {
+    "name": "Property_features"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "property": {
+      "via": "property_features",
+      "model": "property"
+    }
+  }
+}

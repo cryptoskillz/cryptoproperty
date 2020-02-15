@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "renters",
+  "info": {
+    "name": "Renter"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "password"
+    },
+    "property_rental": {
+      "via": "renters",
+      "model": "property-rental"
+    }
+  }
+}
