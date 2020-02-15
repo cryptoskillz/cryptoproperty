@@ -92,6 +92,10 @@
                         <header class="entry-header page-header">
                             <h1>
                                 Properties
+
+                                {% for item  in api.propertiesArray %}
+                                    {{item.Address1}}
+                                {% endfor %}
                             </h1>
                         </header>
                         <!-- .entry-header -->
