@@ -9,7 +9,7 @@ You read more about the experiment here  https://docs.google.com/document/d/13vo
 
 The project is split into 3 main areas
 
-#ADMIN
+# ADMIN
 
 Which has been built in the rather excellent https://strapi.io/
 
@@ -29,15 +29,15 @@ run
 
 this will build the sites with the latest data.
 
-#WWW
+# WWW
 
 This is a simple site that creates a site where you can view the properties. 
 
-#REPORTS
+# REPORTS
 
 This is another static site that gives a summary report for your investors. 
 
-#TODO
+# TODO
 
 cron(ish) scripts that:
     generate invoices and send them to the renter
