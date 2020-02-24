@@ -19,8 +19,23 @@
       "type": "password"
     },
     "property_rental": {
-      "via": "renters",
-      "model": "property-rental"
+      "model": "property-rental",
+      "via": "renters"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "skype": {
+      "type": "string"
+    },
+    "whatsapp": {
+      "type": "string"
+    },
+    "line": {
+      "type": "string"
+    },
+    "teelgram": {
+      "type": "string"
     }
   }
 }

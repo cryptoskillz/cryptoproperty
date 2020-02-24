@@ -1,0 +1,14 @@
+{
+  "info": {
+    "name": "Reports",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "connection": "default",
+  "collectionName": "components_reports_reports"
+}

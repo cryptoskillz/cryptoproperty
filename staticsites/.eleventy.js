@@ -1,8 +1,8 @@
- const api = require('./_data/api');
+ const api = require('./_src/_data/api');
 
 
  module.exports = function (eleventyConfig) {
  	eleventyConfig.addPassthroughCopy({
-    	"assets": "assets"
+    	"_src/www/assets": "/www/assets"
   	});
  }

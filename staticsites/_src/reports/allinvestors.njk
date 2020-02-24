@@ -1,0 +1,48 @@
+---
+layout: reportlayout.njk
+pagination:
+  data: api.investorsArray
+  size: 1
+  alias: investors
+permalink: /reports/investors/{{ investors.trxaddress }}/
+---
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+		    <div class="card-group  ">
+		    	<div class="card ">
+					Name: {{investors.name}}<br>
+					Email: {{investors.email}}<br>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+		    <table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">name</th>
+			      <th scope="col">status</th>
+			      <th scope="col">Tokens</th>
+			      <th scope="col">Fiat</th>
+			    </tr>
+			  </thead>
+			  <tbody> 
+					{% for item  in api.propertySharesArray %}
+						{% if item.investors.id == investors.id %}
+							 <tr>
+						      <th scope="row">{{item.id}}</th>
+						      <td><a href="../../properties/{{item.property.slug}}/">{{item.property.Name}}</a></td>
+						      <td>{{item.property.status}}</td>
+						      <td>{{item.tokens}}</td>
+						      <td>{{item.fiatinvested}}</td>
+						    </tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

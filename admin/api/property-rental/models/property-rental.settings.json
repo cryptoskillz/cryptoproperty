@@ -22,8 +22,8 @@
       "model": "property"
     },
     "renters": {
-      "collection": "renter",
-      "via": "property_rental"
+      "via": "property_rental",
+      "collection": "renter"
     },
     "contract": {
       "collection": "file",

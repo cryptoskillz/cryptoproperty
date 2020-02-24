@@ -1,0 +1,144 @@
+---
+layout: layout.njk
+---
+<div class="row ">
+    <div class="card-group container ">
+    {% for item  in api.propertiesArray %}
+        {% if item.status == "available" %}
+        <div class="col-sm-4 housecard">
+            <div class="card ">
+                <a href="{{item.slug}}/">
+                <img alt="Card image" class="card-img" src="assets/images/defaulthouse.jpg"></img>
+                </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{item.slug}}/">{{item.Name}}</a>
+                        </h5>
+                        <p class="card-text">
+                            <br>
+                            {{item.shortdescription}}
+                            {% if item.Size != null %}
+                                
+                                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" height="25px" width="25px">
+                                  <path d="m150 330h-60v-30h60v-30h-90v-30h90v-30h-60v-30h60v-30h-90v-30h90v-30h-60v-30h60v-60h-150v490.789062l150-152zm0 0" />
+                                  <path d="m450 420h-30v-60h-30v90h-30v-90h-30v60h-30v-60h-30v90h-30v-90h-30v60h-30v-60h-8.789062l-150 152h490.789062v-152h-62zm0 0" />
+                                  <path d="m404.148438 42.21875 63.632812 63.632812 44.21875-42.21875-65.632812-63.632812zm0 0" />
+                                  <path d="m205.050781 241.316406-31.820312 95.453125 95.453125-31.820312 13.109375-13.109375-63.632813-63.632813zm0 0" />
+                                  <path d="m382.9375 63.425781 63.632812 63.632813-143.570312 143.566406-63.628906-63.632812zm0 0" />
+                                </svg>
+                                {{item.Size}} SQm
+                            {% endif %}
+                            {% if item.bedrooms != null %}
+                                {% if item.bedrooms == 1 %}
+                                    <!-- 1 bed icon-->
+                                    <svg
+                                      version="1.1"
+                                      id="Capa_1"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                                      x="0px"
+                                      y="0px"
+                                      viewBox="0 0 512 512"
+                                      style="enable-background:new 0 0 512 512;"
+                                      xml:space="preserve"
+                                      height="25px"
+                                      width="25px"
+                                    >
+                                      <g>
+                                        <g>
+                                          <polygon points="60,286 60,76 0,76 0,436 60,436 60,376 452,376 452,436 512,436 512,376 512,286      " />
+                                        </g>
+                                      </g>
+                                      <g>
+                                        <g>
+                                          <path d="M135,166c-24.853,0-45,20.147-45,45v45h90v-45C180,186.147,159.853,166,135,166z" />
+                                        </g>
+                                      </g>
+                                      <g>
+                                        <g>
+                                          <path d="M467,166H255c-24.853,0-45,20.147-45,45v45h302v-45C512,186.147,491.853,166,467,166z" />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                    <!-- end 1 bed icon -->
+                                {% else %}
+                                    <!-- 2 bed icon-->
+                                    <svg
+                                      height="25px"
+                                      viewBox="0 -65 512 512"
+                                      width="25px"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path d="m301.4375 83.21875h102.734375v49.296875h-102.734375zm0 0" />
+                                      <path d="m107.828125 83.21875h102.734375v49.296875h-102.734375zm0 0" />
+                                      <path d="m77.828125 133.984375v-80.765625h162.734375v79.296875h30.875v-79.296875h162.734375v80.765625c18.933594 3.164063 36.191406 11.34375 50.355469 23.125v-157.109375h-457.054688v157.109375c14.164063-11.78125 31.421875-19.960937 50.355469-23.125zm0 0" />
+                                      <path d="m493.367188 229.242188c-4.796876-38.128907-37.398438-67.726563-76.808594-67.726563h-321.117188c-39.410156 0-72.011718 29.597656-76.808594 67.726563zm0 0" />
+                                      <path d="m0 259.242188v122.597656h30v-37.195313h452v37.195313h30v-122.597656zm0 0" />
+                                    </svg>
+                                    <!-- end 2 bed icon -->
+                                {% endif %}
+                                {{item.bedrooms}} 
+                            {% endif %}
+                            {% if item.bathrooms != null %}
+                                <svg
+                                  version="1.1"
+                                  id="Capa_1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                                  x="0px"
+                                  y="0px"
+                                  viewBox="0 0 512 512"
+                                  style="enable-background:new 0 0 512 512;"
+                                  xml:space="preserve"
+                                  height="25px"
+                                  width="25px"
+                                >
+                                  <g>
+                                    <g>
+                                      <rect x="331" y="218.12" width="31" height="57" />
+                                    </g>
+                                  </g>
+                                  <g>
+                                    <g>
+                                      <polygon points="392,218.125 392,305.125 301,305.125 301,218.125 271,218.125 271,335.125 422,335.125 422,218.125      " />
+                                    </g>
+                                  </g>
+                                  <g>
+                                    <g>
+                                      <path d="M452,218.125v147H241v-147H0v136c0,57.897,47.103,105,105,105h302c57.897,0,105-47.103,105-105v-136H452z" />
+                                    </g>
+                                  </g>
+                                  <g>
+                                    <g>
+                                      <rect x="30" y="158.12" width="30" height="30" />
+                                    </g>
+                                  </g>
+                                  <g>
+                                    <g>
+                                      <rect x="150" y="158.12" width="30" height="30" />
+                                    </g>
+                                  </g>
+                                  <g>
+                                    <g>
+                                      <path
+                                        d="M135,52.875c-24.813,0-45,20.299-45,45.25v90h30v-90c0-8.409,6.729-15.25,15-15.25s15,6.841,15,15.25v30h30v-30
+                                            C180,73.174,159.813,52.875,135,52.875z"
+                                      />
+                                    </g>
+                                  </g>
+                                </svg>
+                                {{item.bathrooms}}
+                            {% endif %}
+                            {% if item.estimatedrent != null %}
+                                <br>
+                                For rent</br>
+                                ${{item.estimatedrent}} 
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>

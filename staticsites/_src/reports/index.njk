@@ -1,0 +1,7 @@
+---
+layout: layout.njk
+---
+<h1>Investors List</h1></br>
+{% for item  in api.investorsArray %}
+	<a href="investors/{{item.trxaddress}}/">{{item.name}}</a><br>
+{% endfor %}

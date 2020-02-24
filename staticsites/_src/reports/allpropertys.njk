@@ -1,0 +1,167 @@
+---
+layout: reportlayout.njk
+pagination:
+  data: api.propertiesArray
+  size: 1
+  alias: properties
+permalink: /reports/properties/{{ properties.slug }}/
+---
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1>Property Details</h1>	
+		    <div class="card-group  ">
+		    	<div class="card ">
+		    		<div class="card-body">
+			    		id: {{properties.id}}<br>
+						Name: {{properties.Name}}<br>
+						<!--Carousel Wrapper-->
+						<div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+							  <!--Indicators-->
+							  <ol class="carousel-indicators">
+							  {% for item  in properties.photos %}
+							  	<li data-target="#carousel-example-2" data-slide-to="{{item.id}}" class="active"></li>
+							  {% endfor %}
+							  </ol>
+							  <!--/.Indicators-->
+							  <!--Slides-->
+							  <div class="carousel-inner" role="listbox">
+							  	{% for item  in properties.photos %}
+							    <div class="carousel-item 
+
+							    {% if item.id == 1 %}
+							    active
+							    {% endif %}
+							    ">
+							      <div class="view">
+							        <img class="d-block w-100" src="http://localhost:1337/{{item.url}}" alt="">
+							        <div class="mask rgba-black-light"></div>
+							      </div>
+							      <div class="carousel-caption">
+							      </div>
+							    </div>
+							    {% endfor %}
+						  </div>
+						  <!--/.Slides-->
+						  <!--Controls-->
+						  <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						  </a>
+						  <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
+						  <!--/.Controls-->
+						</div>
+						<!--/.Carousel Wrapper-->
+						Address: {{properties.Address1}} {{properties.Address2}} {{properties.Address3}} {{properties.Address4}} {{properties.Address5}}</br>
+						{{properties.map | safe}}
+						Purchase price: {{properties.currency}}{{properties.PurchasePrice}}</br>
+						Estimated Rent: {{properties.currency}}{{properties.estimatedrent}}</br>
+						Status: {{properties.status}}</br>
+						Bedrooms: {{properties.bedrooms}}</br>
+						Bathrooms: {{properties.bathrooms}}</br>
+						Size: {{properties.Size}} sq</br>
+						Purchase Date: {{properties.created_at}}</br>
+						Token name: {{properties.tokenname}}</br>
+						Token url: <a href="{{properties.tokenurl}}" target="_blank">{{properties.tokenurl}}</a>
+						Total tokens: {{properties.totalnumberoftokens}}</br>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<h1>Property Share Ownership</h1>
+		    <table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">name</th>
+			      <th scope="col">status</th>
+			      <th scope="col">Tokens</th>
+			      <th scope="col">Fiat</th>
+			    </tr>
+			  </thead>
+			  <tbody> 
+					{% for item  in api.propertySharesArray %}
+						{% if item.property.id == properties.id %}
+							 <tr>
+						      <th scope="row">{{item.id}}</th>
+						      <td>{{item.investors.name}}</td>
+						      <td>{{item.property.status}}</td>
+						      <td>{{item.tokens}}</td>
+						      <td>{{item.fiatinvested}}</td>
+						    </tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-12">
+		{% for item  in api.propertyRentalsArray %}
+			{% if item.property.id == properties.id %}
+			 	<div class="card-group  ">
+			    	<div class="card ">
+			    		<div class="card-body">
+			    			Name:{{item.rental}}</br>
+			    			Start Date:{{item.startdate}}</br>
+			    			End Date:{{item.enddate}}</br>
+			    			Type: {{item.property_rental_type.name}}</br>
+			    			Frequency: {{item.frequency}}</br>
+			    			Deposit: {{item.Desosit}}</br>
+			    			Payment Options:
+			    			{% for item2 in item.property_rental_paymentoptions %}
+			    				{{item2.name}}
+			    			{% endfor %}
+			    			</br>
+			    		</div>
+			    	</div>
+				</div>
+				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">name</th>
+				      <th scope="col">Email</th>
+				    </tr>
+				  </thead>
+				  <tbody> 
+						{% for item3  in item.renters %}
+							 <tr>
+						      <th scope="row">{{item3.id}}</th>
+						      <td>{{item3.name}}</td>
+						      <td><a href="mailto:{{item3.email}}" tagret="_blank">{{item3.email}}</a></td>
+						      
+						    </tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<h1>Property Rent History</h1>
+				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Rent</th>
+				      <th scope="col">Amount</th>
+				       <th scope="col">Paid?</th>
+				    </tr>
+				  </thead>
+				  <tbody> 
+						{% for item3  in item.renters %}
+							 <tr>
+						      <th scope="row"></th>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endif %}
+		{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+

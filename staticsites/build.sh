@@ -9,4 +9,11 @@ else
 export ELEVENTY_ENV=$1
 fi
 
-eleventy
+wipeOutOldBuild () {
+    echo 'Wiping out old build directory'
+    rm -rf ./_site/**
+}
+
+wipeOutOldBuild
+
+eleventy --input ./_src/

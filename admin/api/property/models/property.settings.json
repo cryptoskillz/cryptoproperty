@@ -81,6 +81,19 @@
         "yes",
         "no"
       ]
+    },
+    "slug": {
+      "type": "string"
+    },
+    "estimatedrent": {
+      "type": "integer"
+    },
+    "map": {
+      "type": "richtext"
+    },
+    "currency": {
+      "type": "string",
+      "maxLength": 1
     }
   }
 }
