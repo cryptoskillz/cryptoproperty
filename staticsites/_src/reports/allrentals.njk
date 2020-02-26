@@ -1,0 +1,58 @@
+---
+layout: reportlayout.njk
+pagination:
+  data: api.propertyRentalsArray
+  size: 1
+  alias: rentals
+permalink: /reports/properties/rentals/{{ rentals.id }}/
+---
+{{rentals.rental}}<br>
+{{rentals.startdate}}<br>
+{{rentals.enddate}}<br>
+{{rentals.property_rental_type.name}}<br>
+{{rentals.frequency}}<br>
+{{rentals.Deposit}}<br>
+
+#todo
+#get the reminder state from an ajax call
+#do the payment logic, emails and such
+
+<h1>Property Rent History</h1>
+<table class="table table-hover">
+	<thead>
+		<tr>
+		  <th scope="col">#</th>
+		  <th scope="col">Payment Date</th>
+		  <th scope="col">Status</th>
+		  <th scope="col">Amount Paid</th>
+		  <th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody> 
+	{% for item in api.proprtyRentsArray %}
+		{% if item.property_rental.id == rentals.id %}
+			<tr>
+				<th scope="row">{{item.id}}</th>
+				<td>{{item.status}}</td>
+				<td>{{item.paymentdate}}</td>
+				<td>{{item.AmountPaid}}</td>
+				<td>
+					{% if item.reminder == "none" %}
+						<a href="javascript:doReminder(3,'http://localhost:1337/property-rents/{{item.id}}/',1);">Payment Request</a>
+					{% endif %}					
+					{% if item.reminder == "once" %}
+						<a href="javascript:doReminder(3,'http://localhost:1337/property-rents/{{item.id}}/',2);">Frist reminder</a>
+					{% endif %}					
+					{% if item.reminder == "twice" %}
+						<a href="javascript:doReminder(3,'http://localhost:1337/property-rents/{{item.id}}/',3);">Second reminder</a>
+					{% endif %}					
+					{% if item.reminder == "third" %}
+						<a href="javascript:doFinalReminder();">Final reminder</a>
+					{% endif %}
+				</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+	</tbody>
+</table>
+

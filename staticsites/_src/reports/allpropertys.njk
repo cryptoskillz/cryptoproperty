@@ -56,7 +56,7 @@ permalink: /reports/properties/{{ properties.slug }}/
 						</div>
 						<!--/.Carousel Wrapper-->
 						Address: {{properties.Address1}} {{properties.Address2}} {{properties.Address3}} {{properties.Address4}} {{properties.Address5}}</br>
-						{{properties.map | safe}}
+						{{properties.map | safe}}</br>
 						Purchase price: {{properties.currency}}{{properties.PurchasePrice}}</br>
 						Estimated Rent: {{properties.currency}}{{properties.estimatedrent}}</br>
 						Status: {{properties.status}}</br>
@@ -65,7 +65,7 @@ permalink: /reports/properties/{{ properties.slug }}/
 						Size: {{properties.Size}} sq</br>
 						Purchase Date: {{properties.created_at}}</br>
 						Token name: {{properties.tokenname}}</br>
-						Token url: <a href="{{properties.tokenurl}}" target="_blank">{{properties.tokenurl}}</a>
+						Token url: <a href="{{properties.tokenurl}}" target="_blank">{{properties.tokenurl}}</a></br>
 						Total tokens: {{properties.totalnumberoftokens}}</br>
 					</div>	
 				</div>
@@ -99,66 +99,43 @@ permalink: /reports/properties/{{ properties.slug }}/
 			</table>
 		</div>
 		<div class="col-12">
-		{% for item  in api.propertyRentalsArray %}
-			{% if item.property.id == properties.id %}
-			 	<div class="card-group  ">
-			    	<div class="card ">
-			    		<div class="card-body">
-			    			Name:{{item.rental}}</br>
-			    			Start Date:{{item.startdate}}</br>
-			    			End Date:{{item.enddate}}</br>
-			    			Type: {{item.property_rental_type.name}}</br>
-			    			Frequency: {{item.frequency}}</br>
-			    			Deposit: {{item.Desosit}}</br>
-			    			Payment Options:
-			    			{% for item2 in item.property_rental_paymentoptions %}
-			    				{{item2.name}}
-			    			{% endfor %}
-			    			</br>
-			    		</div>
-			    	</div>
-				</div>
-				<table class="table table-hover">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">name</th>
-				      <th scope="col">Email</th>
-				    </tr>
-				  </thead>
-				  <tbody> 
-						{% for item3  in item.renters %}
-							 <tr>
-						      <th scope="row">{{item3.id}}</th>
-						      <td>{{item3.name}}</td>
-						      <td><a href="mailto:{{item3.email}}" tagret="_blank">{{item3.email}}</a></td>
-						      
-						    </tr>
-						{% endfor %}
-					</tbody>
-				</table>
-				<h1>Property Rent History</h1>
-				<table class="table table-hover">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">Rent</th>
-				      <th scope="col">Amount</th>
-				       <th scope="col">Paid?</th>
-				    </tr>
-				  </thead>
-				  <tbody> 
-						{% for item3  in item.renters %}
-							 <tr>
-						      <th scope="row"></th>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			{% endif %}
-		{% endfor %}
+			<h1>Property Rent History</h1>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">name</th>
+					  <th scope="col">Start Date</th>
+					  <th scope="col">End Date</th>
+					  <th scope="col">Type</th>
+					  <th scope="col">Frequency</th>
+					  <th scope="col">Deposit</th>
+					  <th scope="col">Payment</th>
+					  <th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody> 
+				{% for item  in api.propertyRentalsArray %}
+					{% if item.property.id == properties.id %}
+						<tr>
+					      	<th scope="row">{{item.id}}</th>
+							<td>{{item.rental}}</td>
+							<td>{{item.startdate}}</td>
+							<td>{{item.enddate}}</td>
+							<td>{{item.property_rental_type.name}}</td>
+							<td>{{item.frequency}}</td>
+							<td>{{item.Desosit}}</td>
+							<td>
+								{% for item2 in item.property_rental_paymentoptions %}
+									{{item2.name}}
+								{% endfor %}
+							</td>
+							<td><a href="../rentals/{{item.id}}">View</a></td>
+					    </tr>
+					{% endif %}
+				{% endfor %}
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

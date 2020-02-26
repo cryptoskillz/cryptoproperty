@@ -29,7 +29,6 @@ getPropertyShares= async () => {
 //get a list of shares
 getInvestors = async () => {
     try {
-
         var res = await superagent.get(env.API_URL + 'investors/').query({
         });
         var resultsArray = res.body;
@@ -88,7 +87,7 @@ getPropertyRentals = async () => {
             nextPageURL = nextPage.body.next
             resultsArray = resultsArray.concat(nextPage.body.results)
         }
-        console.log(resultsArray[0].renters)
+        //console.log(resultsArray)
         console.log('Built property rentals array with ' + resultsArray.length + ' property rentals');
         return resultsArray;
 
@@ -98,21 +97,45 @@ getPropertyRentals = async () => {
     }
 }
 
+getPropertyRent = async () => {
+    try {
+        var res = await superagent.get(env.API_URL + 'property-rents/').query({
+        });
+        var resultsArray = res.body;
+        var hasNextPage = !!(res.body.next)
+        var nextPageURL = res.body.next;
+        while (hasNextPage) {
+            var nextPage = await superagent.get(nextPageURL);
+            hasNextPage = !!(nextPage.body.next)
+            nextPageURL = nextPage.body.next
+            resultsArray = resultsArray.concat(nextPage.body.results)
+        }
+        //console.log(resultsArray)
+        console.log('Built property rents array with ' + resultsArray.length + ' property rents');
+        return resultsArray;
+    } catch (err) {
+
+    }
+}
+
 module.exports = async () => {
 	let properties = [];
     let investors = [];
     let propertyshares = [];
     let propertyrentals = [];
+    let proprtyrents = [];
     propertyshares = await getPropertyShares();
 	properties = await getProperties();
     investors = await getInvestors();
     propertyrentals = await getPropertyRentals();
+    propretyrents = await getPropertyRent();
 	//console.log(properties)
 	return {
 		propertiesArray:properties,
         investorsArray:investors,
         propertySharesArray:propertyshares,
-        propertyRentalsArray:propertyrentals
+        propertyRentalsArray:propertyrentals,
+        proprtyRentsArray:propretyrents
 	}
 
 }

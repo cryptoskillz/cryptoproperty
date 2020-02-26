@@ -19,8 +19,8 @@
       "type": "password"
     },
     "property_rental": {
-      "model": "property-rental",
-      "via": "renters"
+      "via": "renters",
+      "model": "property-rental"
     },
     "telephone": {
       "type": "string"

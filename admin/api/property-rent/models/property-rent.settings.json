@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "property_rents",
+  "info": {
+    "name": "PropertyRent"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "property_rental": {
+      "model": "property-rental"
+    },
+    "paymentdate": {
+      "type": "date"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "paid",
+        "not_paid"
+      ]
+    },
+    "AmountPaid": {
+      "type": "integer"
+    },
+    "reminder": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "once",
+        "twice",
+        "third"
+      ],
+      "default": "none"
+    }
+  }
+}

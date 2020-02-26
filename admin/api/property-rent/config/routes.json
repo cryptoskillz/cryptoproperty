@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/property-rents",
+      "handler": "property-rent.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/property-rents/count",
+      "handler": "property-rent.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/property-rents/:id",
+      "handler": "property-rent.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/property-rents",
+      "handler": "property-rent.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/property-rents/:id",
+      "handler": "property-rent.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/property-rents/:id",
+      "handler": "property-rent.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
